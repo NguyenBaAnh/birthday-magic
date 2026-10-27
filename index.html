@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#160b31" />
+  <title>Birthday Magic ✨</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="fireworks" aria-hidden="true"></canvas>
+  <div class="stars" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#home">✦ Birthday Magic</a>
+    <button id="musicToggle" class="ghost" aria-pressed="false">♫ Bật nhạc</button>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="glow glow-one"></div><div class="glow glow-two"></div>
+      <div class="hero-copy">
+        <span class="eyebrow">✧ Một ngày thật đặc biệt ✧</span>
+        <h1>Biến sinh nhật thành <em>phép màu!</em></h1>
+        <p>Nhập tên, chọn ảnh và tạo một màn chúc mừng ngập tràn ánh sáng, hoa giấy, pháo hoa và giai điệu.</p>
+        <form id="birthdayForm" class="form-card">
+          <label for="birthdayName">Tên người được chúc mừng</label>
+          <input id="birthdayName" maxlength="65" placeholder="Ví dụ: Nguyễn Minh Anh" required />
+          <label class="upload" for="photoInput"><span>📸</span> <span id="uploadLabel">Chọn ảnh kỷ niệm (JPG, PNG, WebP)</span></label>
+          <input id="photoInput" type="file" accept="image/png,image/jpeg,image/webp" hidden />
+          <button type="submit" class="primary">✨ Bắt đầu điều kỳ diệu</button>
+          <small>Ảnh chỉ được xử lý trên trình duyệt, không tải lên máy chủ.</small>
+        </form>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="floating b1">🎈</div><div class="floating b2">🎁</div><div class="floating b3">🌟</div>
+        <div class="cake"><div class="candle"><i></i></div><div class="tier top-tier"></div><div class="tier bottom-tier"></div><div class="plate"></div></div>
+        <div class="art-caption">Make a wish ✦</div>
+      </div>
+    </section>
+    <section class="invite-panel" id="invite">
+      <div class="section-head"><span class="eyebrow">✉ Gửi lời thương</span><h2>Soạn thiệp mời sinh nhật</h2><p>Điền thông tin, hệ thống sẽ viết thiệp mời để bạn chia sẻ qua Messenger.</p></div>
+      <div class="invite-grid">
+        <form id="inviteForm" class="form-card invite-form">
+          <label for="senderName">Tên người mời</label><input id="senderName" required maxlength="70" placeholder="Ví dụ: Minh Anh" />
+          <label for="guestName">Tên người được mời</label><input id="guestName" required maxlength="70" placeholder="Ví dụ: Lan" />
+          <div class="two-cols"><div><label for="inviteDate">Ngày tổ chức</label><input type="date" id="inviteDate" required /></div><div><label for="inviteTime">Giờ bắt đầu</label><input type="time" id="inviteTime" required value="18:30" /></div></div>
+          <label for="invitePlace">Địa điểm <span class="optional">(không bắt buộc)</span></label><input id="invitePlace" maxlength="130" placeholder="Ví dụ: Nhà mình / Quán cà phê..." />
+          <button class="primary" type="submit">💌 Soạn thiệp tự động</button>
+        </form>
+        <article class="invitation" id="invitePreview"><span class="invitation-stars">✦ ✦ ✦</span><h3>You're Invited!</h3><div class="invitation-rule"></div><p id="inviteText" class="invitation-text">Thiệp mời xinh xắn của bạn sẽ xuất hiện tại đây ✨</p><div class="invite-actions"><button id="copyInvite" class="secondary" disabled>⧉ Sao chép lời mời</button><button id="shareInvite" class="secondary" disabled>↗ Chia sẻ</button><button id="messengerInvite" class="messenger" disabled>✉ Gửi qua Messenger</button></div><small class="share-note" id="shareHint">Messenger yêu cầu bạn tự chọn người nhận và nhấn gửi.</small></article>
+      </div>
+    </section>
+  </main>
+  <div id="celebration" class="celebration" hidden role="dialog" aria-modal="true" aria-labelledby="greetingTitle">
+    <div class="celebration-shine"></div>
+    <button id="closeCelebration" class="close-btn" aria-label="Đóng">×</button>
+    <span class="celebration-tag">✧ TODAY IS YOUR DAY ✧</span>
+    <div class="portrait-wrap"><img id="celebrationPhoto" class="portrait" alt="Ảnh người được chúc mừng" hidden /><div id="portraitFallback" class="portrait-fallback">🎂</div></div>
+    <h2 id="greetingTitle">Happy Birthday!</h2><p id="personGreeting" class="person-name"></p>
+    <p class="wish">Chúc bạn một tuổi mới rực rỡ, luôn được yêu thương và có thật nhiều điều tuyệt vời đang chờ phía trước! 💖</p>
+    <div class="celebration-buttons"><button id="moreFireworks" class="primary">🎆 Bắn thêm pháo hoa</button><button id="backButton" class="secondary">↩ Tạo lời chúc khác</button></div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
